@@ -3,6 +3,40 @@
     <style name="Base.Theme.EducationZ" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/app_color</item>
+        <item name="colorPrimaryVariant">@color/app_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/app_color</item>
+        <item name="colorSecondaryVariant">@color/app_color</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <!--navigation menu font family-->
+    <style name="NavigationMenuViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+
+    <!-- ProgressBar Color. -->
+    <style name="ProgressBar">
+        <item name="colorSecondary">@color/black</item>
+    </style>
+
+    <style name="fontfamily" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="fontfamilys" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/kalpurush</item>
+    </style>
+
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
     </style>
 
     <style name="Theme.EducationZ" parent="Base.Theme.EducationZ" />
