@@ -77,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registarUser() {
-        String usersname, email, age, institute, password;
+        String usersname, email, age, institute, password, image = String.valueOf(0);
         usersname = username.getText().toString().trim();
         email = emailET.getText().toString().trim();
         age = ageET.getText().toString().trim();
@@ -128,7 +128,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            User user = new User(usersname, email, age, institute, password);
+                            User user = new User(usersname, email, age, institute, password, image);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -144,7 +144,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                             } else {
 
                                                 progressBar.setVisibility(View.VISIBLE);
-                                                Toast.makeText(SignUpActivity.this, "রRegistration Unsuccessful", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SignUpActivity.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
 
                                             }
                                         }
