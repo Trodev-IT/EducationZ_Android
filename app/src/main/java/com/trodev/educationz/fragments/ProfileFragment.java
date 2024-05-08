@@ -32,7 +32,9 @@ import com.trodev.educationz.activity.SignInActivity;
 
 public class ProfileFragment extends Fragment {
 
-    CardView btn_logout;
+    LinearLayout btn_logout;
+
+    //CardView btn_logout;
 //    private FirebaseUser user;
 //    private DatabaseReference reference;
 //    private String userID;
@@ -41,7 +43,7 @@ public class ProfileFragment extends Fragment {
 //    CardView notification_button, Feedback_btn;
 
     ImageView avatarTv, coverTv;
-    TextView nameTv, emailTv, ageTv, instituetTv;
+    TextView nameTv, emailTv, ageTv, instituetTv, numberTv;
     FloatingActionButton fab;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -73,6 +75,7 @@ public class ProfileFragment extends Fragment {
         emailTv= view.findViewById(R.id.emailTv);
         ageTv= view.findViewById(R.id.ageTv);
         instituetTv= view.findViewById(R.id.instituteTv);
+        numberTv= view.findViewById(R.id.numberTv);
         progress_circular= view.findViewById(R.id.progress_circular);
 
         progress_circular.setVisibility(View.VISIBLE);
@@ -89,6 +92,7 @@ public class ProfileFragment extends Fragment {
                     String username = "Name: "+ ds.child("usersname").getValue();
                     String email = "Email: "+ ds.child("email").getValue();
                     String age = "Age: "+ ds.child("age").getValue();
+                    String number = "Mobile number: "+ ds.child("number").getValue();
                     String image = ""+ ds.child("image").getValue();
                     String institute= "Institute Name: "+ds.child("institute").getValue();
                     //String cover = ""+ ds.child("cover").getValue();
@@ -98,6 +102,7 @@ public class ProfileFragment extends Fragment {
                     emailTv.setText(email);
                     ageTv.setText(age);
                     instituetTv.setText(institute);
+                    numberTv.setText(number);
 
                     try {
                         Picasso.get().load(image).into(avatarTv);
