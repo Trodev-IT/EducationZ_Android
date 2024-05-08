@@ -30,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private TextView signin;
     private MaterialButton signup;
-    private EditText username, emailET, ageET, instituteEt, passwordET;
+    private EditText username, emailET, ageET, instituteEt, passwordET, numberET;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
 
@@ -53,9 +53,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         /*init widget views*/
         signup = findViewById(R.id.signup);
         signup.setOnClickListener(this);
+
         username = findViewById(R.id.username);
         emailET = findViewById(R.id.emailEt);
         ageET = findViewById(R.id.ageEt);
+        numberET= findViewById(R.id.numberEt);
         instituteEt = findViewById(R.id.instituteEt);
         passwordET = findViewById(R.id.passwordEt);
         progressBar = findViewById(R.id.progressBar);
@@ -77,12 +79,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registarUser() {
-        String usersname, email, age, institute, password, image = String.valueOf(0);
+        String usersname, email, age, institute, password, number, image = String.valueOf(0);
         usersname = username.getText().toString().trim();
         email = emailET.getText().toString().trim();
         age = ageET.getText().toString().trim();
         institute = instituteEt.getText().toString().trim();
         password = passwordET.getText().toString().trim();
+        number= numberET.getText().toString().trim();
 
         if (usersname.isEmpty()) {
             username.setError("Name is required");
@@ -119,6 +122,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+        if (number.isEmpty()){
+            numberET.setError("Mobile number is required");
+            numberET.requestFocus();
+            return;
+        }
+
         progressBar.setVisibility(View.VISIBLE);
 
         //Firebase Database
@@ -128,7 +137,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            User user = new User(usersname, email, age, institute, password, image);
+                            User user = new User(usersname, email, age, institute, password, number, image);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

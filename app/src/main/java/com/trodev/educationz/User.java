@@ -1,16 +1,17 @@
 package com.trodev.educationz;
 
 public class User {
-    public String usersname, email, age, institute, password, image;
+    public String usersname, email, age, institute, password, number, image;
 
     public User() {
 
     }
 
-    public User(String usersname, String email, String age, String institute, String password, String image) {
+    public User(String usersname, String email, String age, String institute, String password, String number, String image) {
         this.usersname = usersname;
         this.email = email;
         this.age = age;
+        this.number= number;
         this.institute = institute;
         this.password = password;
         this.image= image;
@@ -38,6 +39,13 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getInstitute() {
