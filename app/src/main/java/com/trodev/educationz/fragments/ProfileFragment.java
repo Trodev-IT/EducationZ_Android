@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ import com.trodev.educationz.activity.SignInActivity;
 
 public class ProfileFragment extends Fragment {
 
-//    CardView btn_logout;
+    CardView btn_logout;
 //    private FirebaseUser user;
 //    private DatabaseReference reference;
 //    private String userID;
@@ -47,6 +48,8 @@ public class ProfileFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     //StorageReference storageReference;
+
+    ProgressBar progress_circular;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -70,6 +73,9 @@ public class ProfileFragment extends Fragment {
         emailTv= view.findViewById(R.id.emailTv);
         ageTv= view.findViewById(R.id.ageTv);
         instituetTv= view.findViewById(R.id.instituteTv);
+        progress_circular= view.findViewById(R.id.progress_circular);
+
+        progress_circular.setVisibility(View.VISIBLE);
 
         Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
@@ -95,6 +101,7 @@ public class ProfileFragment extends Fragment {
 
                     try {
                         Picasso.get().load(image).into(avatarTv);
+                        progress_circular.setVisibility(View.INVISIBLE);
                     } catch (Exception e){
                         Picasso.get().load(R.drawable.add_image).into(avatarTv);
                     }
@@ -112,6 +119,18 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        btn_logout = view.findViewById(R.id.btn_logout);
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), SignInActivity.class));
+                Toast.makeText(getContext(), "log-out successful", Toast.LENGTH_SHORT).show();
+                getActivity().finishAffinity();
             }
         });
 
