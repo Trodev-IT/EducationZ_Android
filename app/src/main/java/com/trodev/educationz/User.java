@@ -1,18 +1,19 @@
 package com.trodev.educationz;
 
 public class User {
-    public String usersname, email, age, institute, password;
+    public String usersname, email, age, institute, password, image;
 
     public User() {
 
     }
 
-    public User(String usersname, String email, String age, String institute, String password) {
+    public User(String usersname, String email, String age, String institute, String password, String image) {
         this.usersname = usersname;
         this.email = email;
         this.age = age;
         this.institute = institute;
         this.password = password;
+        this.image= image;
     }
 
     public String getUsersname() {
@@ -53,5 +54,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
