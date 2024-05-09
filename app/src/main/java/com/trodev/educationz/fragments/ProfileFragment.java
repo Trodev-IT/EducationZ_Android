@@ -28,11 +28,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.trodev.educationz.R;
 import com.trodev.educationz.User;
+import com.trodev.educationz.activity.ChangePasswordActivity;
 import com.trodev.educationz.activity.SignInActivity;
 
 public class ProfileFragment extends Fragment {
 
-    LinearLayout btn_logout;
+    LinearLayout btn_logout, btn_cngpassword;
 
     //CardView btn_logout;
 //    private FirebaseUser user;
@@ -95,7 +96,7 @@ public class ProfileFragment extends Fragment {
                     String number = "Mobile number: "+ ds.child("number").getValue();
                     String image = ""+ ds.child("image").getValue();
                     String institute= "Institute Name: "+ds.child("institute").getValue();
-                    //String cover = ""+ ds.child("cover").getValue();
+//                    String cover = ""+ ds.child("cover").getValue();
 
                     //set data
                     nameTv.setText(username);
@@ -115,6 +116,7 @@ public class ProfileFragment extends Fragment {
 //                        /*Picasso.get().load(cover).into(coverTv);*/
 //                        Picasso.get().load(cover).into(coverTv);
 //                    } catch (Exception e){
+//                        Picasso.get().load(R.drawable.add_image).into(coverTv);
 //                    }
                 }
 
@@ -127,8 +129,15 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btn_cngpassword= view.findViewById(R.id.btn_cngpassword);
         btn_logout = view.findViewById(R.id.btn_logout);
-
+        btn_cngpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ChangePasswordActivity.class));
+                Toast.makeText(getContext(), "Password Recovery", Toast.LENGTH_SHORT).show();
+            }
+        });
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
