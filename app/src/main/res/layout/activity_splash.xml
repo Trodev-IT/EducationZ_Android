@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -16,11 +17,13 @@
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:alpha="0.6"
-        android:src="@drawable/signin" />
+        android:src="@drawable/signin"
+        tools:ignore="MissingConstraints" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,10 +38,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="50dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/space_grotesk_bold"
                 android:text="Welcome to"
                 android:textColor="@color/color_6"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,17 +49,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/space_grotesk_bold"
                 android:text="EducationZ"
                 android:textColor="@color/color_6"
-                android:textSize="50sp" />
+                android:textSize="45sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/space_grotesk_bold"
                 android:text="Your ultimate educational partner"
                 android:textColor="@color/color_6"
                 android:textSize="20sp" />
@@ -70,13 +73,13 @@
         android:layout_height="65dp"
         android:gravity="center"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:text="Let's get started!"
+        android:fontFamily="@font/space_grotesk_bold"
         android:background="@drawable/button"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
